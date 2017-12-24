@@ -8,8 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class GreetingController {
 
     @RequestMapping("/receiveSecret")
-    public Secrets greeting(@RequestParam(value = "secretUrl") String url) {
-        System.out.println(url);
-        return new Secrets(url);
+    public Secrets greeting(@RequestParam(value = "uid") String uid, @RequestParam(value = "secretUrl") String url) {
+        System.out.println(uid + " " + url);
+
+        return new Secrets(uid, url);
+    }
+
+    @RequestMapping("/uid")
+    public UID greeting() {
+        UID uid = new UID();
+        System.out.println(uid.getuid());
+        return uid;
     }
 }
